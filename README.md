@@ -1,9 +1,9 @@
 # ATV Kit
 
-An Apple TV–style home screen for Android TV: clean and ad-free, with a weather app that matches it, a theme that puts
-them together, and a TV-friendly screen-mirroring receiver: all of it built on existing free and open-source projects, with the changes
-made while setting up a Xiaomi Mi Box S (Android TV 9). Nothing here is official or affiliated with any of the
-projects, companies or trademarks named below.
+An Apple TV–style home screen for Android TV, clean and ad-free, with a weather app that matches it, a theme that
+puts them together, and a TV-friendly screen-mirroring receiver. All of it is built on existing free and open-source
+projects, with the changes made while setting up a Xiaomi Mi Box S (Android TV 9). Nothing here is official or
+affiliated with any of the projects, companies or trademarks named below.
 
 | Folder | What it is | Built on | Licence |
 |---|---|---|---|
