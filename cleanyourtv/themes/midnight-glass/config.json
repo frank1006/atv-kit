@@ -1,0 +1,47 @@
+{
+  "dock_apps": [
+    "com.google.android.youtube.tv",
+    "com.stremio.one",
+    "com.aniultimatium.tv",
+    "com.myiptvonline.implayer",
+    "app.smarttube.fdroid",
+    "com.internet.tvbrowser"
+  ],
+  "app_labels": [
+    "app.smarttube.fdroid=SmartTube",
+    "io.github.jqssun.airplay=AirPlay"
+  ],
+  "live_tv_package": "",
+  "background_color": "#090C14",
+  "wallpaper": true,
+  "wallpaper_true_color": true,
+  "cinematic_home": true,
+  "cinematic_white_focus": true,
+  "dock_glass": true,
+  "dock_opacity": 70,
+  "glass_style": "glass",
+  "app_glow": false,
+  "focus_overshoot": false,
+  "advanced_effects": true,
+  "show_greeting": false,
+  "icon_only_buttons": true,
+  "wifi_menu": true,
+  "gear_menu": true,
+  "gear_menu_apps": [
+    "io.github.jqssun.airplay"
+  ],
+  "reorder_wiggle": true,
+  "header_scrim": true,
+  "glow_drift": true,
+  "show_inputs_pill": false,
+  "columns": 6,
+  "rows_below_dock": 1,
+  "clock_wallpaper": true,
+  "clock_wallpaper_dim": 50,
+  "app_keys": [
+    "KEYCODE_ALL_APPS:switcher"
+  ],
+  "show_memory": true,
+  "header_weather_by_buttons": true,
+  "header_weather_app": "io.github.sumyabazar1.weather"
+}

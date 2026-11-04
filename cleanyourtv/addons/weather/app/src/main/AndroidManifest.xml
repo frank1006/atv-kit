@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-feature android:name="android.software.leanback" android:required="false" />
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false" />
+
+    <!-- The only permission: Open-Meteo, for the place search, the weather and the air quality. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="false"
+        android:banner="@drawable/banner"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/Weather">
+
+        <activity
+            android:name=".WeatherActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+            </intent-filter>
+            <!-- Clean Your TV module card (docs/specs/card.md): the tile shows as "Weather" once the owner says Show. -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="com.gathin.tvhome.category.DOCK_CARD" />
+            </intent-filter>
+            <meta-data android:name="com.gathin.tvhome.card" android:resource="@xml/module_card" />
+        </activity>
+
+        <!-- The last reading in a few words, for the Clean Your TV header (header_weather_app): no place, no
+             coordinates. Asking for it is what starts a new reading, through FetchJob, when it is old. Open to any
+             app on purpose, with no permission: what it gives is public weather, and the launcher, which asks, takes on
+             no permissions of its own. -->
+        <provider
+            android:name=".NowProvider"
+            android:authorities="io.github.sumyabazar1.weather.now"
+            android:exported="true"
+            tools:ignore="ExportedContentProvider">
+            <intent-filter>
+                <action android:name="com.gathin.tvhome.action.HEADER_WEATHER" />
+            </intent-filter>
+        </provider>
+
+        <service
+            android:name=".FetchJob"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+    </application>
+</manifest>

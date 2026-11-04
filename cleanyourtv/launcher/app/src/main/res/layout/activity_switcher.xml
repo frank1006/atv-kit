@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The recent-apps panel (SwitcherActivity): a see-through panel over the app on screen, which keeps running under
+     the dark wash (over Home, the wallpaper instead, as Home's own text would show through), with Home's big title and meta line on the left and a row of the apps used since the TV
+     started where the dock sits. Every block has a fixed place, so
+     nothing moves when the row empties. The cards (item_switcher_card.xml) are added in code. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FF090C14"
+        android:scaleType="centerCrop"
+        android:visibility="gone"
+        android:importantForAccessibility="no" />
+
+    <View
+        android:id="@+id/scrim"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B3050608" />
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingTop="111dp"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <!-- Home's cinematic shelf: heroName at 68sp (MainActivity.setUpCinematicShelf) and heroMeta under it. The
+             hint's text is set once the apps are read: how to use the row, or that nothing is running. -->
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="68dp"
+            android:text="@string/switcher_title"
+            android:textColor="#FFFFFFFF"
+            android:textSize="68sp"
+            android:fontFamily="@string/font_light"
+            android:letterSpacing="-0.025"
+            android:includeFontPadding="false"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="12dp"
+            android:singleLine="true"
+            android:textColor="#B3FFFFFF"
+            android:textSize="15sp"
+            android:fontFamily="@string/font_light" />
+
+        <!-- The row keeps a fixed height, empty or not, so nothing below or above it moves. -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="196dp"
+            android:layout_marginTop="28dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
+
+            <!-- The fading edge doubles as the margin HorizontalScrollView keeps around the focused card. -->
+            <HorizontalScrollView
+                android:id="@+id/scroller"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="none"
+                android:overScrollMode="never"
+                android:requiresFadingEdge="horizontal"
+                android:fadingEdgeLength="68dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:id="@+id/row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:paddingStart="68dp"
+                    android:paddingEnd="40dp"
+                    android:paddingTop="22dp"
+                    android:clipChildren="false"
+                    android:clipToPadding="false" />
+            </HorizontalScrollView>
+
+        </FrameLayout>
+
+        <!-- Down from any card; Up goes back to it. Shown once there are cards. -->
+        <TextView
+            android:id="@+id/closeAll"
+            style="@style/TopButton"
+            android:visibility="invisible"
+            android:layout_marginStart="68dp"
+            android:paddingStart="22dp"
+            android:paddingEnd="22dp"
+            android:text="@string/switcher_close_all" />
+    </LinearLayout>
+
+    <!-- show_memory: the TV's free memory in the bottom corner, never focused. The bar's fill is the free share,
+         scaled from its start edge. Shown once the memory is read. -->
+    <LinearLayout
+        android:id="@+id/memory"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="68dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/memory_pill_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/memoryFree"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textColor="#FFFFFFFF"
+                android:textSize="13sp"
+                android:fontFamily="@string/font_light"
+                android:includeFontPadding="false" />
+
+            <FrameLayout
+                android:layout_width="110dp"
+                android:layout_height="4dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/memory_track">
+
+                <View
+                    android:id="@+id/memoryBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/memory_bar" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/memoryTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:singleLine="true"
+            android:textColor="#80FFFFFF"
+            android:textSize="12sp"
+            android:fontFamily="@string/font_light" />
+    </LinearLayout>
+</FrameLayout>

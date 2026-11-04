@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The day's name and low on a day card. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true" android:color="#8C111111" />
+    <item android:color="#8CFFFFFF" />
+</selector>

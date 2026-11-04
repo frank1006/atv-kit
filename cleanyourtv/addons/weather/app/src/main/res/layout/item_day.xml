@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One forecast day, sized and spaced as the launcher's recent-apps tile (item_switcher_card): a 208 x 117dp card,
+     the launcher's glass panel and white while focused like a tile, with the day, icon, high and low and a bar of the
+     day's low to high on the week's scale (today's with a dot at the temperature now); under it, the sky in words, as
+     the recent apps' names are. The card's children follow its focus (duplicateParentState). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="208dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="28dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/card"
+        android:layout_width="208dp"
+        android:layout_height="117dp"
+        android:background="@drawable/day_card"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp">
+
+        <!-- The day's name, and its icon at the end (WeatherActivity.bindDay sets it, dimens.xml day_icon). -->
+        <TextView
+            android:id="@+id/dayName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableTint="@color/card_text"
+            android:duplicateParentState="true"
+            android:ellipsize="end"
+            android:fontFamily="@font/outfit_medium"
+            android:gravity="center_vertical"
+            android:letterSpacing="0.18"
+            android:singleLine="true"
+            android:textAllCaps="true"
+            android:textColor="@color/card_text_dim"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/dayTemps"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:duplicateParentState="true"
+            android:fontFamily="@font/outfit_light"
+            android:gravity="center_vertical"
+            android:singleLine="true"
+            android:textColor="@color/card_text"
+            android:textSize="28sp" />
+
+        <!-- The bar, and on today's the temperature now as a dot along it (WeatherActivity.bindDay). -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:duplicateParentState="true">
+
+            <LinearLayout
+                android:id="@+id/dayRange"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/range_track"
+                android:duplicateParentState="true"
+                android:orientation="horizontal">
+
+                <View
+                    android:id="@+id/rangeBefore"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:id="@+id/rangeFill"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/range_fill"
+                    android:duplicateParentState="true" />
+
+                <View
+                    android:id="@+id/rangeAfter"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/nowRow"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/nowBefore"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:background="@drawable/now_dot" />
+
+                <View
+                    android:id="@+id/nowAfter"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- The recent apps' name line: quiet at rest, full white and a little lower while the card is focused. -->
+    <TextView
+        android:id="@+id/daySky"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:alpha="0.55"
+        android:ellipsize="end"
+        android:fontFamily="@font/outfit_medium"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textColor="#FFFFFFFF"
+        android:textSize="16sp" />
+</LinearLayout>

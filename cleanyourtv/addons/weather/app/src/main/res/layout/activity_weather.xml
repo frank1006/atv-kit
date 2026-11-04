@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Full screen on a 1080p TV (960 x 540 dp), in the Clean Your TV launcher's look: Outfit, its glass pills and
+     panels, its weather icons. The window's background is a glow in the weather's colour (Forecast.backdrop). -->
+<!-- Nothing here clips its children: sections rise from below their places, and the focused card grows, past the
+     bounds of the rows and the column they are in. A <merge> would put them under the window's content frame, which
+     clips. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    tools:ignore="MergeRootFrame">
+
+    <!-- One column, centred top to bottom, with one gap between its sections (dimens.xml section_gap). Change city
+         is in it too, outside the reading's part, so it is there before a reading is. -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingStart="68dp"
+        android:paddingEnd="68dp">
+
+        <LinearLayout
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:visibility="invisible">
+
+            <!-- The place, and when it was read: the launcher's section labels. -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/place"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/outfit_medium"
+                    android:letterSpacing="0.18"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:textAllCaps="true"
+                    android:textColor="#8CFFFFFF"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/updated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_medium"
+                    android:letterSpacing="0.12"
+                    android:singleLine="true"
+                    android:textAllCaps="true"
+                    android:textColor="#8CFFFFFF"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_gap"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- As thin as Home's clock. -->
+                <TextView
+                    android:id="@+id/temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/outfit_extralight"
+                    android:layout_marginTop="@dimen/temp_trim_top"
+                    android:layout_marginBottom="@dimen/temp_trim_bottom"
+                    android:includeFontPadding="false"
+                    android:letterSpacing="-0.04"
+                    android:textColor="#FFFFFFFF"
+                    android:textSize="104sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="28dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/sky"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="12dp"
+                        android:drawableTint="#FFFFFFFF"
+                        android:fontFamily="@font/outfit_light"
+                        android:gravity="center_vertical"
+                        android:singleLine="true"
+                        android:textColor="#FFFFFFFF"
+                        android:textSize="32sp" />
+
+                    <!-- Today's high and low, the date line's style on Home. -->
+                    <TextView
+                        android:id="@+id/today"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/outfit_regular"
+                        android:letterSpacing="0.14"
+                        android:singleLine="true"
+                        android:textAllCaps="true"
+                        android:textColor="#A6FFFFFF"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Feels like, humidity, wind and air quality, one resting-glass pill each (WeatherActivity.detail). -->
+            <LinearLayout
+                android:id="@+id/details"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/section_gap"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="horizontal" />
+
+            <!-- The days scroll sideways like the launcher's recent-apps row, with its card size, gaps and edges: edge to
+                 edge (the negative margins undo the screen's 68dp), the row padded back in, and room above and below for
+                 the focused card's growth. The fading edge's length stays the margin kept around the focused card, but the
+                 fade is not drawn (MarginScroller): on the Mi Box's GPU it made 72% of scrolled frames late, against none
+                 without it; the card cut by the screen's edge shows that there is more. -->
+            <io.github.sumyabazar1.weather.MarginScroller
+                android:id="@+id/daysScroller"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-68dp"
+                android:layout_marginTop="@dimen/gap_beside_days"
+                android:layout_marginEnd="-68dp"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:fadingEdgeLength="68dp"
+                android:overScrollMode="never"
+                android:requiresFadingEdge="horizontal"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/days"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingStart="68dp"
+                    android:paddingTop="@dimen/growth_room"
+                    android:paddingEnd="40dp"
+                    android:paddingBottom="@dimen/growth_room" />
+            </io.github.sumyabazar1.weather.MarginScroller>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/gap_after_days"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/changeCity"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:background="@drawable/pill"
+                android:drawableStart="@drawable/ic_place"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/pill_text"
+                android:focusable="true"
+                android:fontFamily="@font/outfit_medium"
+                android:gravity="center_vertical"
+                android:paddingStart="16dp"
+                android:paddingEnd="20dp"
+                android:text="@string/change_city"
+                android:textColor="@color/pill_text"
+                android:textSize="15sp" />
+
+            <!-- Open-Meteo's data is CC BY 4.0: the credit stays on the screen that shows it. -->
+            <TextView
+                android:id="@+id/credit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/outfit_regular"
+                android:gravity="end"
+                android:singleLine="true"
+                android:text="@string/credit"
+                android:textColor="#66FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/outfit_light"
+        android:gravity="center"
+        android:maxWidth="560dp"
+        android:text="@string/loading"
+        android:textColor="#CCFFFFFF"
+        android:textSize="22sp" />
+
+</FrameLayout>

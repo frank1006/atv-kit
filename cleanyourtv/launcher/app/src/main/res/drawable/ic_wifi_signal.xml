@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A network's signal in the Wi-Fi drop-down: set its level to the bars, 0 to 3 (WifiNetworks.Network.level). -->
+<level-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:maxLevel="1" android:drawable="@drawable/ic_wifi_signal_1" />
+    <item android:maxLevel="2" android:drawable="@drawable/ic_wifi_signal_2" />
+    <item android:maxLevel="3" android:drawable="@drawable/ic_wifi_signal_3" />
+</level-list>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One pill of the line under the temperature (feels like, humidity, wind, air quality): the launcher's resting glass,
+     never focused, its icon tinted like its words. WeatherActivity.showDetails sets the words and the icon. -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/detail_height"
+    android:layout_marginEnd="10dp"
+    android:background="@drawable/detail_pill"
+    android:drawablePadding="8dp"
+    android:drawableTint="#D9FFFFFF"
+    android:fontFamily="@font/outfit_regular"
+    android:gravity="center_vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="14dp"
+    android:singleLine="true"
+    android:textColor="#D9FFFFFF"
+    android:textSize="14sp" />

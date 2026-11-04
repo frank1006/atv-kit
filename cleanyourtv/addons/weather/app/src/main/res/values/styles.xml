@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The page's window: the screen's near-black from the first frame (the glow replaces it with the reading), and
+         its own fades in and out. -->
+    <style name="Weather" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/base</item>
+        <item name="android:windowAnimationStyle">@style/WeatherWindow</item>
+    </style>
+
+    <!-- Opened from Home it starts a task, so the task animations are the ones used; the activity ones cover the
+         rest. Home's own animations stay the system's. -->
+    <style name="WeatherWindow">
+        <item name="android:taskOpenEnterAnimation">@anim/page_in</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/page_in</item>
+        <item name="android:activityOpenEnterAnimation">@anim/page_in</item>
+        <item name="android:taskCloseExitAnimation">@anim/page_out</item>
+        <item name="android:taskToBackExitAnimation">@anim/page_out</item>
+        <item name="android:activityCloseExitAnimation">@anim/page_out</item>
+    </style>
+</resources>

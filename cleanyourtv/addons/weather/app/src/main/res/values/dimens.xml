@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The one gap between the page's sections: place, now, the pills, the days and Change city. -->
+    <dimen name="section_gap">32dp</dimen>
+    <!-- Room above and below the days for the focused card's growth (1.1 of 117dp), taken out of the gaps around them. -->
+    <dimen name="growth_room">14dp</dimen>
+    <!-- section_gap less growth_room: the margin that leaves an even gap beside the days' room. -->
+    <dimen name="gap_beside_days">18dp</dimen>
+    <!-- Under the days, measured from the words at rest (a focused day's words sit 6dp lower). -->
+    <dimen name="gap_after_days">18dp</dimen>
+    <!-- The big temperature's line box is taller than its digits (Outfit's ascent and descent): these take back the
+         empty part above and below, so the gaps around it look as even as the others. -->
+    <dimen name="temp_trim_top">-32.5dp</dimen>
+    <dimen name="temp_trim_bottom">-28.5dp</dimen>
+
+    <!-- The weather icon beside "Clear", as tall as its words. -->
+    <dimen name="sky_icon">34dp</dimen>
+    <!-- The icon at the end of a day card's top line. -->
+    <dimen name="day_icon">28dp</dimen>
+    <!-- A pill under the temperature, and its icon; the air quality's dot. -->
+    <dimen name="detail_height">38dp</dimen>
+    <dimen name="detail_icon">18dp</dimen>
+    <dimen name="aqi_dot">10dp</dimen>
+</resources>

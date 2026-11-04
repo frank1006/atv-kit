@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- A day's low to high, cool to warm; deeper on the focused card's white, where the pale amber would fade. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <shape android:shape="rectangle">
+            <gradient android:angle="0" android:startColor="#FF4F86E8" android:endColor="#FFE89A2C" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <gradient android:angle="0" android:startColor="#FF8FB8FF" android:endColor="#FFFFD27A" />
+            <corners android:radius="2dp" />
+        </shape>
+    </item>
+</selector>
