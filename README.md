@@ -28,6 +28,88 @@ blurred.
 | ![The screen-mirroring receiver waiting for a device](docs/screenshots/airplay.jpg) | |
 | **Screen mirroring**: the receiver's TV screen, waiting for an iPhone, iPad or Mac | |
 
+## Install
+
+There are no ready-made APKs yet: you build the apps from this repository on a computer (macOS, Linux, or Windows
+with Git Bash) and install them on the TV over your home network. Allow about half an hour the first time.
+
+**You need**
+
+- An Android TV or Google TV box or set on Android 8.0 or newer, on the same network as the computer.
+- Git, Python 3, and the Android build tools: JDK 17 (launcher, Weather) and JDK 21 (receiver); the Android SDK with
+  platforms 34 and 37, build-tools 34.0.0, NDK 27.0.12077973 and CMake (Android Studio's SDK Manager installs them),
+  with `ANDROID_HOME` pointing at the SDK. The launcher's script finds JDK 17 by itself.
+
+**1. Get the code**, with the receiver's libraries:
+
+```bash
+git clone --recursive https://github.com/frank1006/atv-kit.git
+cd atv-kit/cleanyourtv
+python3 -m venv tools/venv && tools/venv/bin/pip install -r tools/requirements.txt
+```
+
+**2. Let the computer reach the TV.** On the TV: Settings → Device Preferences → About → press OK on **Build** seven
+times → back → Developer options → **USB debugging** on (and **Network** or **ADB debugging** if the TV has it).
+Note the TV's IP address under About → Status. The first time the computer connects, accept "Allow USB debugging?"
+on the TV. In the commands below, replace `<tv ip>` with that address.
+
+**3. The launcher**, made the default Home:
+
+```bash
+TV_HOST=<tv ip> INPUT_KEY_SERVICE=1 launcher/build-and-install.sh
+```
+
+It builds the launcher, installs it, makes it Home, and **switches off the TV's own launcher** (disabled, not
+uninstalled: it prints which one, so you can switch it back on, see below). `INPUT_KEY_SERVICE=1` lets the remote's
+buttons reach the launcher from any app (the theme opens recent apps with the Apps key); pass it each time you run
+the script.
+
+**4. The theme:**
+
+```bash
+TV_HOST=<tv ip> tools/theme.sh themes/midnight-glass
+```
+
+**5. The Weather app** (built with JDK 17 as `JAVA_HOME`), then open it once from the weather button on Home and
+choose your city:
+
+```bash
+(cd addons/weather && ./gradlew assembleRelease)
+TV_HOST=<tv ip> tools/venv/bin/python -I tools/b64push.py addons/weather/app/build/outputs/apk/release/app-release.apk /data/local/tmp/weather.apk
+TV_HOST=<tv ip> tools/venv/bin/python -I tools/tv.py 'pm install -r /data/local/tmp/weather.apk; rm -f /data/local/tmp/weather.apk'
+```
+
+**6. The screen-mirroring receiver** (built with JDK 21 as `JAVA_HOME`; its build applies the UxPlay patches by
+itself, and the debug build is the one signed for installing as it is):
+
+```bash
+(cd ../airplay && ./gradlew assembleDebug)
+TV_HOST=<tv ip> tools/venv/bin/python -I tools/b64push.py ../airplay/app/build/outputs/apk/debug/app-debug.apk /data/local/tmp/airplay.apk
+TV_HOST=<tv ip> tools/venv/bin/python -I tools/tv.py 'pm install -r /data/local/tmp/airplay.apk; rm -f /data/local/tmp/airplay.apk'
+```
+
+The theme puts it in the gear's menu on Home. Open it once and leave it running to receive from an iPhone, iPad or
+Mac on the same network.
+
+**7. Close the door again.** On the TV, switch **USB debugging** (and Network or ADB debugging) off and restart it;
+then check from the computer that the port is closed:
+
+```bash
+tools/venv/bin/python -I tools/adb-closed.py <tv ip>
+```
+
+**Undo.** Back to the TV's own home screen: switch its launcher back on (the package step 3 printed, for example
+`com.mitv.tvhome` on a Mi Box or `com.google.android.tvlauncher` on Android TV), then remove this one:
+
+```bash
+TV_HOST=<tv ip> tools/venv/bin/python -I tools/tv.py 'pm enable <stock launcher>; pm uninstall com.gathin.tvhome'
+```
+
+**Optional: removing the TV's ads and preinstalled apps.** CleanYourTV's main job is switching off a TV's telemetry,
+ad rows and preinstalled apps, with lists for many models and a restore script for every step. It is separate from
+this kit, done at your own risk, and explained in [`cleanyourtv/README.md`](cleanyourtv/README.md) and
+[`cleanyourtv/PROMPT.md`](cleanyourtv/PROMPT.md); read those before running it.
+
 ## What changed from the originals
 
 **Launcher** ([`cleanyourtv/launcher/`](cleanyourtv/launcher/)). Every addition is a switch that is off by default
