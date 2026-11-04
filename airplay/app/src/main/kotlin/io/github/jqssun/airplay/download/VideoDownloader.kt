@@ -90,7 +90,7 @@ class VideoDownloader(private val context: Context) {
 
     private fun _publish(file: File): String? {
         val stamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.US).format(Date())
-        val name = "AirPlay_$stamp.mp4"
+        val name = "Screen_Mirroring_$stamp.mp4"
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 val resolver = context.contentResolver

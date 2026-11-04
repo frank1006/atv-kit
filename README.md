@@ -23,9 +23,9 @@ blurred.
 |---|---|
 | ![Recent apps over Home, with the free-memory pill](docs/screenshots/recent-apps.jpg) | ![The Weather add-on: today and the week as cards, with a glow following the focused day](docs/screenshots/weather.jpg) |
 | **Recent apps**: the apps used since the TV started, closing with Up, and the memory free | **Weather**: now, its details, and today and the week on one temperature scale |
-| ![The Wi-Fi drop-down from the top bar](docs/screenshots/wifi-menu.jpg) | ![The gear's menu: TV settings, AirPlay, launcher settings, module cards and reorder](docs/screenshots/settings-menu.jpg) |
-| **Wi-Fi menu**: the networks around, opening the TV's own page to join one | **Settings menu**: one press on the gear; AirPlay lives here instead of in the grid |
-| ![The screen-mirroring receiver waiting for a device](docs/screenshots/airplay.jpg) | |
+| ![The Wi-Fi drop-down from the top bar](docs/screenshots/wifi-menu.jpg) | ![The gear's menu: TV settings, Screen Mirroring, launcher settings, module cards and reorder](docs/screenshots/settings-menu.jpg) |
+| **Wi-Fi menu**: the networks around, opening the TV's own page to join one | **Settings menu**: one press on the gear; Screen Mirroring lives here instead of in the grid |
+| ![The screen-mirroring receiver waiting for a device](docs/screenshots/screen-mirroring.jpg) | |
 | **Screen mirroring**: the receiver's TV screen, waiting for an iPhone, iPad or Mac | |
 
 ## Install

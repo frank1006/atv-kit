@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AirPlay Server</string>
+    <string name="app_name">Screen Mirroring</string>
 
     <!-- Notification -->
-    <string name="notification_channel">AirPlay Service</string>
-    <string name="notification_title">AirPlay Server Running</string>
-    <string name="notification_text">Accepting AirPlay connections</string>
-    <string name="notification_pin_title">AirPlay PIN Required</string>
+    <string name="notification_channel">Screen Mirroring</string>
+    <string name="notification_title">Screen Mirroring is on</string>
+    <string name="notification_text">Ready for an iPhone, iPad or Mac</string>
+    <string name="notification_pin_title">PIN required</string>
     <string name="notification_pin_text">PIN: %1$s</string>
     <string name="stop_service">Stop</string>
 
@@ -28,7 +28,7 @@
     <string name="btn_allow">Allow</string>
     <string name="btn_open_settings">Open settings</string>
     <string name="local_network_label">Nearby devices access needed</string>
-    <string name="local_network_desc">Allow access to nearby devices so AirPlay devices can find and connect to this device</string>
+    <string name="local_network_desc">Allow access to nearby devices so iPhones, iPads and Macs can find and connect to this device</string>
     <string name="unknown_track">Unknown</string>
 
     <!-- Content descriptions -->
@@ -68,7 +68,7 @@
     <string name="scale_hundred_percent">100%</string>
 
     <!-- Dialogs -->
-    <string name="dialog_pin_title">AirPlay PIN</string>
+    <string name="dialog_pin_title">Screen Mirroring PIN</string>
     <string name="btn_ok">OK</string>
 
     <!-- Logs screen -->
@@ -87,9 +87,9 @@
     <string name="setting_server_name">Server name</string>
     <string name="setting_server_port">Server port</string>
     <string name="setting_auto_start">Start server automatically</string>
-    <string name="setting_auto_start_desc">Start the AirPlay server when the app launches</string>
+    <string name="setting_auto_start_desc">Start receiving when the app opens</string>
     <string name="setting_boot_auto_start">Start server at boot</string>
-    <string name="setting_boot_auto_start_desc">Start the AirPlay server when the device starts</string>
+    <string name="setting_boot_auto_start_desc">Start receiving when the TV starts</string>
     <string name="setting_run_in_background">Run in background</string>
     <string name="setting_run_in_background_desc">Keep the server running after leaving the app</string>
 
@@ -106,11 +106,11 @@
     <string name="setting_auto_fullscreen_desc">Enter fullscreen when a sender connects</string>
     <string name="setting_keep_screen_on">Keep screen on</string>
     <string name="setting_keep_screen_on_desc">Prevent sleeping while a sender is connected</string>
-    <string name="setting_advertise_video">Advertise AirPlay video support</string>
+    <string name="setting_advertise_video">Offer video</string>
     <string name="setting_advertise_video_desc">When off, videos are cast as audio only streams</string>
-    <string name="setting_advertise_mirroring">Advertise AirPlay mirroring support</string>
+    <string name="setting_advertise_mirroring">Offer screen mirroring</string>
     <string name="setting_advertise_mirroring_desc">When off, the device is hidden from mirroring</string>
-    <string name="setting_advertise_audio">Advertise AirPlay audio support</string>
+    <string name="setting_advertise_audio">Offer audio</string>
     <string name="setting_advertise_audio_desc">When off, the device can only be used for mirroring and will be hidden from media players</string>
     <string name="setting_alac">Advertise ALAC codec</string>
     <string name="setting_alac_desc">Offer ALAC in the mDNS record; used for music streaming</string>
@@ -203,7 +203,7 @@
     <string name="debug_clients">Senders: %1$d</string>
 
     <!-- TV interface -->
-    <string name="tv_status_ready">Ready for AirPlay</string>
+    <string name="tv_status_ready">Ready to mirror</string>
     <string name="tv_status_no_network">No Wi-Fi or Ethernet</string>
     <string name="tv_status_connecting">Connecting…</string>
     <string name="tv_status_mirroring">Mirroring</string>

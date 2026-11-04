@@ -9,7 +9,7 @@
   ],
   "app_labels": [
     "app.smarttube.fdroid=SmartTube",
-    "io.github.jqssun.airplay=AirPlay"
+    "io.github.jqssun.airplay=Screen Mirroring"
   ],
   "live_tv_package": "",
   "background_color": "#090C14",
